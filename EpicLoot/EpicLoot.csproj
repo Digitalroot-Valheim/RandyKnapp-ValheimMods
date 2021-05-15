@@ -169,7 +169,6 @@
     <Compile Include="MagicItemEffects\AvoidDamageTaken.cs" />
     <Compile Include="MagicItemEffects\Comfortable.cs" />
     <Compile Include="MagicItemEffects\DoubleJump.cs" />
-    <Compile Include="MagicItemEffects\Duelist.cs" />
     <Compile Include="MagicItemEffects\Executioner.cs" />
     <Compile Include="MagicItemEffects\ExplosiveArrows.cs" />
     <Compile Include="MagicItemEffects\FeatherFall.cs" />
@@ -178,6 +177,7 @@
     <Compile Include="MagicItemEffects\IncreaseHealth.cs" />
     <Compile Include="MagicItemEffects\IncreaseStamina.cs" />
     <Compile Include="MagicItemEffects\Indestructible.cs" />
+    <Compile Include="MagicItemEffects\MagicEffectsHelper.cs" />
     <Compile Include="MagicItemEffects\ModifyArmor.cs" />
     <Compile Include="MagicItemEffects\ModifyAttackSpeed.cs" />
     <Compile Include="MagicItemEffects\ModifyAttackStamina.cs" />
@@ -190,6 +190,7 @@
     <Compile Include="MagicItemEffects\ModifyHealthRegen.cs" />
     <Compile Include="MagicItemEffects\ModifyJumpStaminaUsage.cs" />
     <Compile Include="MagicItemEffects\ModifyParry.cs" />
+    <Compile Include="MagicItemEffects\ModifyParryWindow.cs" />
     <Compile Include="MagicItemEffects\ModifyResistance.cs" />
     <Compile Include="MagicItemEffects\ModifyRunStaminaDrain.cs" />
     <Compile Include="MagicItemEffects\AddSkillLevel.cs" />
@@ -206,6 +207,7 @@
     <Compile Include="MagicItemEffects\ModifyMovementSpeed.cs" />
     <Compile Include="MagicItemEffects\ReflectDamage.cs" />
     <Compile Include="MagicItemEffects\Riches.cs" />
+    <Compile Include="MagicItemEffects\Slow.cs" />
     <Compile Include="MagicItemEffects\StaggerOnDamageTaken.cs" />
     <Compile Include="MagicItemEffects\Throwable.cs" />
     <Compile Include="MagicItemEffects\Waterproof.cs" />
