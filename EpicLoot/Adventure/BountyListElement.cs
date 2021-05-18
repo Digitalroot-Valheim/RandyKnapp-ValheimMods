@@ -2,6 +2,7 @@
 using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
+using Logger = BepInEx.Logging.Logger;
 
 namespace EpicLoot.Adventure
 {
@@ -119,7 +120,8 @@ namespace EpicLoot.Adventure
             switch (BountyInfo.State)
             {
                 case BountyState.Available:
-                    _sb.AppendLine("  $mod_epicloot_bounties_tooltip_available");
+                    _sb.AppendLine("  Available");
+                    // _sb.AppendLine("  $mod_epicloot_bounties_tooltip_available");
                     break;
                 case BountyState.InProgress:
                     _sb.AppendLine("  <color=#00f0ff>$mod_epicloot_bounties_tooltip_inprogress</color>");
@@ -131,8 +133,10 @@ namespace EpicLoot.Adventure
                     _sb.AppendLine("  $mod_epicloot_bounties_tooltip_claimed");
                     break;
             }
-
-            return Localization.instance.Localize(_sb.ToString());
+            // ZLog.Log($"A: {_sb}");
+            var l = Localization.instance.Localize(_sb.ToString());
+            // ZLog.Log($"B: {l}");
+            return l;
         }
     }
 }
