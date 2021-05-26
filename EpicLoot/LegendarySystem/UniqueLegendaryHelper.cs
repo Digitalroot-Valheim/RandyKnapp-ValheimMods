@@ -26,6 +26,7 @@ namespace EpicLoot.LegendarySystem
             AddLegendaryInfo(config.LegendaryItems);
 
             LegendarySets.Clear();
+            _itemsToSetMap.Clear();
             AddLegendarySets(config.LegendarySets);
         }
 
@@ -42,7 +43,6 @@ namespace EpicLoot.LegendarySystem
             foreach (var legendarySetInfo in legendarySets)
             {
                 LegendarySets.Add(legendarySetInfo.ID, legendarySetInfo);
-                Debug.LogWarning($"Added Set: {legendarySetInfo.ID}");
                 foreach (var legendaryID in legendarySetInfo.LegendaryIDs)
                 {
                     _itemsToSetMap.Add(legendaryID, legendarySetInfo);
