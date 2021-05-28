@@ -1,11 +1,8 @@
 fileFormatVersion: 2
 guid: dca2dae7b3711aa4299fd66e55ce5c6e
-timeCreated: 1618245717
-licenseType: Free
 TextureImporter:
-  internalIDToNameTable: {}
+  internalIDToNameTable: []
   externalObjects: {}
-  usedFileIDs: []
   serializedVersion: 11
   mipmaps:
     mipMapMode: 0
@@ -80,16 +77,16 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID:
+    spriteID: 
     internalID: 0
     vertices: []
-    indices:
+    indices: 
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag:
+  spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
-  userData:
-  assetBundleName:
-  assetBundleVariant:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
