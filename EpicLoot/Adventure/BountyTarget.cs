@@ -51,21 +51,31 @@ namespace EpicLoot.Adventure
         private void OnDeath()
         {
             EpicLoot.LogWarning("BountyTarget.OnDeath");
-            var pkg = new ZPackage();
-            _bountyInfo.ToPackage(pkg);
+            if (ZNet.instance.IsServer() || !ZNet.instance.IsServer() && !ZNet.instance.IsDedicated())
+            {
+                var pkg = new ZPackage();
+                _bountyInfo.ToPackage(pkg);
 
-            EpicLoot.LogWarning($"SENDING -> RPC_SlayBountyTarget: {_monsterID} ({(_isAdd ? "minion" : "target")})");
-            ZRoutedRpc.instance.InvokeRoutedRPC("SlayBountyTarget", pkg, _monsterID, _isAdd);
+                EpicLoot.LogWarning($"SENDING -> RPC_SlayBountyTarget: {_monsterID} ({(_isAdd ? "minion" : "target")})");
+                ZRoutedRpc.instance.InvokeRoutedRPC("SlayBountyTarget", _monsterID, _isAdd, pkg);
+            }
+            else
+            {
+                var bountyID = _zdo.GetString(BountyTarget.BountyIDKey);
+                ZRoutedRpc.instance.InvokeRoutedRPC("SlayBountyIDTarget", _monsterID, _isAdd, bountyID);
+            }
         }
 
         public void Initialize(BountyInfo bounty, string monsterID, bool isAdd)
         {
             _zdo.Set(BountyIDKey, bounty.ID);
-
-            var pkg = new ZPackage();
-            bounty.ToPackage(pkg);
-            pkg.SetPos(0);
-            _zdo.Set(BountyDataKey, pkg.GetBase64());
+            if (ZNet.instance.IsServer() || !ZNet.instance.IsServer() && !ZNet.instance.IsDedicated())
+            {
+                var pkg = new ZPackage();
+                bounty.ToPackage(pkg);
+                pkg.SetPos(0);
+                _zdo.Set(BountyDataKey, pkg.GetBase64());
+            }
             _zdo.Set(MonsterIDKey, monsterID);
             _zdo.Set(IsAddKey, isAdd);
             _zdo.Set(BountyTargetNameKey, GetTargetName(_character.m_name, isAdd, bounty.TargetName));
@@ -79,10 +89,12 @@ namespace EpicLoot.Adventure
 
         public void Reinitialize()
         {
-            var pkgString = _zdo.GetString(BountyDataKey);
-            var pkg = new ZPackage(pkgString);
-            _bountyInfo = BountyInfo.FromPackage(pkg);
-
+            if (ZNet.instance.IsServer() || !ZNet.instance.IsServer() && !ZNet.instance.IsDedicated())
+            { 
+                var pkgString = _zdo.GetString(BountyDataKey);
+                var pkg = new ZPackage(pkgString);
+                _bountyInfo = BountyInfo.FromPackage(pkg);
+            }
             _monsterID = _zdo.GetString(MonsterIDKey);
             _isAdd = _zdo.GetBool(IsAddKey);
 

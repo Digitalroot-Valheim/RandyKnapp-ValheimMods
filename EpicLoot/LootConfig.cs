@@ -23,6 +23,7 @@ namespace EpicLoot
     public class LootTable
     {
         public string Object;
+        public string RefObject;
         public float[][] Drops;
         public float[][] Drops2;
         public float[][] Drops3;
